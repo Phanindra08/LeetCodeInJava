@@ -9,7 +9,7 @@ public class TwoSum {
      * This method utilizes a HashMap to store each number in the array as the key and its corresponding index as the value.
      * Iterates through the array and checks if the map contains the difference of target and current number, if yes returns the indexes of the current number and difference of target, current number.
      *
-     * @param nums - The input is array of integers provided by the user
+     * @param nums - An array of integers provided by the user
      * @param target - The target sum that the two numbers in the array should add up.
      * @return - returns an array containing the indices of the two numbers whose sum is equal to the target. It returns null if no such pair exists.
      */
