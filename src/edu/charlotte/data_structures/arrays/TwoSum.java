@@ -24,7 +24,7 @@ public class TwoSum {
     }
 
     /**
-     * We have given the Sample test cases from the Leetcode as input to the twoSum method.
+     * We have given the Sample test cases from the Leetcode as input to the {@code twoSum} method.
      * @param args - Command line arguments (not used)
      */
     public static void main(String[] args) {

@@ -23,7 +23,7 @@ public class ContainsDuplicate {
     }
 
     /**
-     * We have given the Sample test cases from the Leetcode as input to the containsDuplicate method.
+     * We have given the Sample test cases from the Leetcode as input to the {@code containsDuplicate} method.
      * @param args - Command line arguments (not used)
      */
     public static void main(String[] args) {
