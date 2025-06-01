@@ -12,7 +12,7 @@ public class MergeTwoSortedLists {
      * @param list2 - The head of the second sorted singly-linked list.
      * @return - The head of the merged sorted singly-linked list.
      */
-    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+    private ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         ListNode dummy = new ListNode();
         ListNode tail = dummy;
         while(list1 != null && list2 != null) {
@@ -72,19 +72,16 @@ public class MergeTwoSortedLists {
         ListNode list1 = mergeTwoSortedLists.createList(new int[]{1, 2, 4});
         ListNode list2 = mergeTwoSortedLists.createList(new int[]{1, 3, 4});
         mergeTwoSortedLists.print(mergeTwoSortedLists.mergeTwoLists(list1, list2));
-        list1 = null;
-        list2 = null;
-        mergeTwoSortedLists.print(mergeTwoSortedLists.mergeTwoLists(list1, list2));
-        list1 = null;
+        mergeTwoSortedLists.print(mergeTwoSortedLists.mergeTwoLists(null, null));
         list2 = mergeTwoSortedLists.createList(new int[]{0});
-        mergeTwoSortedLists.print(mergeTwoSortedLists.mergeTwoLists(list1, list2));
+        mergeTwoSortedLists.print(mergeTwoSortedLists.mergeTwoLists(null, list2));
     }
 
     /**
      * Definition for singly-linked list.
      * Created a default constructor, a constructor with one argument, a constructor with two arguments.
      */
-    class ListNode {
+    static class ListNode {
         int val;
         ListNode next;
         public ListNode() {}
