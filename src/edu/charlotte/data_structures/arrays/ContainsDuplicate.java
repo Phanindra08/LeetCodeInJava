@@ -1,5 +1,6 @@
 package edu.charlotte.data_structures.arrays;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,14 +13,19 @@ public class ContainsDuplicate {
      * @param nums - An array of integers provided by the user
      * @return - returns true if the array contains duplicate values, else returns false.
      */
-    public boolean containsDuplicate(int[] nums) {
+    public boolean containsDuplicateSolution1(int[] nums) {
         Set<Integer> numbersSet = new HashSet<>();
-        for(int index = 0; index < nums.length; index++) {
-            if(numbersSet.contains(nums[index]))
+        for (int num : nums) {
+            if (numbersSet.contains(num))
                 return true;
-            numbersSet.add(nums[index]);
+            numbersSet.add(num);
         }
         return false;
+    }
+
+    public boolean containsDuplicateSolution2(int[] nums) {
+        Set<Integer> numbersSet = new HashSet<>(Arrays.stream(nums).boxed().toList());
+        return numbersSet.size() != nums.length;
     }
 
     /**
@@ -28,8 +34,8 @@ public class ContainsDuplicate {
      */
     public static void main(String[] args) {
         ContainsDuplicate containsDuplicateObject = new ContainsDuplicate();
-        System.out.println(containsDuplicateObject.containsDuplicate(new int[]{1, 2, 3, 1}));
-        System.out.println(containsDuplicateObject.containsDuplicate(new int[]{1, 2, 3, 4}));
-        System.out.println(containsDuplicateObject.containsDuplicate(new int[]{1, 1, 1, 3, 3, 4, 3, 2, 4, 2}));
+        System.out.println(containsDuplicateObject.containsDuplicateSolution1(new int[]{1, 2, 3, 1}));
+        System.out.println(containsDuplicateObject.containsDuplicateSolution1(new int[]{1, 2, 3, 4}));
+        System.out.println(containsDuplicateObject.containsDuplicateSolution2(new int[]{1, 1, 1, 3, 3, 4, 3, 2, 4, 2}));
     }
 }
