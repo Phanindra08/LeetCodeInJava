@@ -12,7 +12,7 @@ public class MergeTwoSortedLists {
      * @param list2 - The head of the second sorted singly-linked list.
      * @return - The head of the merged sorted singly-linked list.
      */
-    private ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+    private ListNode mergeTwoListsSolution1(ListNode list1, ListNode list2) {
         ListNode dummy = new ListNode();
         ListNode tail = dummy;
         while(list1 != null && list2 != null) {
@@ -25,11 +25,21 @@ public class MergeTwoSortedLists {
             }
             tail = tail.next;
         }
-        if(list1 != null)
-            tail.next = list1;
-        if(list2 != null)
-            tail.next = list2;
+        tail.next = (list1 != null)? list1 : list2;
         return dummy.next;
+    }
+
+    private ListNode mergeTwoListsSolution2(ListNode list1, ListNode list2) {
+        if(list1 == null || list2 == null)
+            return list1 == null ? list2 : list1;
+
+        if(list1.val < list2.val) {
+            list1.next = mergeTwoListsSolution2(list1.next, list2);
+            return list1;
+        } else {
+            list2.next = mergeTwoListsSolution2(list1, list2.next);
+            return list2;
+        }
     }
 
     /**
@@ -71,10 +81,10 @@ public class MergeTwoSortedLists {
         MergeTwoSortedLists mergeTwoSortedLists = new MergeTwoSortedLists();
         ListNode list1 = mergeTwoSortedLists.createList(new int[]{1, 2, 4});
         ListNode list2 = mergeTwoSortedLists.createList(new int[]{1, 3, 4});
-        mergeTwoSortedLists.print(mergeTwoSortedLists.mergeTwoLists(list1, list2));
-        mergeTwoSortedLists.print(mergeTwoSortedLists.mergeTwoLists(null, null));
-        list2 = mergeTwoSortedLists.createList(new int[]{0});
-        mergeTwoSortedLists.print(mergeTwoSortedLists.mergeTwoLists(null, list2));
+        mergeTwoSortedLists.print(mergeTwoSortedLists.mergeTwoListsSolution1(list1, list2));
+        mergeTwoSortedLists.print(mergeTwoSortedLists.mergeTwoListsSolution2(null, null));
+        list2 = mergeTwoSortedLists.createList(new int[] {0});
+        mergeTwoSortedLists.print(mergeTwoSortedLists.mergeTwoListsSolution2(null, list2));
     }
 
     /**
@@ -85,9 +95,6 @@ public class MergeTwoSortedLists {
         int val;
         ListNode next;
         public ListNode() {}
-        public ListNode(int val) {
-            this.val = val;
-        }
         public ListNode(int val, ListNode next) {
             this.val = val; this.next = next;
         }
