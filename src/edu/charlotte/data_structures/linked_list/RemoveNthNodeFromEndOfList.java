@@ -2,7 +2,7 @@ package edu.charlotte.data_structures.linked_list;
 
 public class RemoveNthNodeFromEndOfList {
 
-    public ListNode removeNthFromEnd(ListNode head, int n) {
+    private ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode dummy = new ListNode(0, head);
         ListNode right = head;
         ListNode left = dummy;
@@ -56,9 +56,6 @@ public class RemoveNthNodeFromEndOfList {
         int val;
         ListNode next;
         public ListNode() {}
-        public ListNode(int val) {
-            this.val = val;
-        }
         public ListNode(int val, ListNode next) {
             this.val = val; this.next = next;
         }
